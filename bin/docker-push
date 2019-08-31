@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "Pushing docker tag latest"
+
+docker push marmaechler/kafka2influxdbbridge:latest
+
+if [ "$1" ]; then
+  echo "Pushing docker tag $1"
+
+  docker tag marmaechler/kafka2influxdbbridge:latest "marmaechler/kafka2influxdbbridge:$1"
+  docker push "marmaechler/kafka2influxdbbridge:$1"
+fi
